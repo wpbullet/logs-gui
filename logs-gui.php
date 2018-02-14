@@ -29,8 +29,7 @@
 			width: calc( 100% - 550px );
 		}
 		.log_code {
-			font-size: 14px;
-			line-height: 2em;
+			font-size: 0;
 		}
 		.jstree-default .jstree-leaf .jstree-themeicon {
 		    background-position: -102px -68px;
@@ -39,7 +38,12 @@
 			height: calc( 100vh - 300px );
 		}
 		.accesslog ol {
-		    padding: 0 10px;
+			padding: 10px;
+		    font-size: 14px;
+		    line-height: 2em;
+		    -webkit-margin-before: 0;
+		    -webkit-margin-after: 0;
+		    white-space: nowrap;
 		}
 	</style> </head> <body>
 	<?php
@@ -187,6 +191,9 @@
 								if ( DISPLAY_REVERSE ) {
 									// Latest first
 									$output = array_reverse( $output );
+								}
+								if ( '' == $output[0] ) {
+									unset( $output[0] );
 								}
 								$output = implode( '<br>', $output );
 								echo $output;
